@@ -16,9 +16,9 @@ pipeline {
         
         stage ('email') {
             steps {
-                emailext body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+                emailext attachLog: true, body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
 
-                 Check console output at $BUILD_URL to view the results.''', subject: 'This application is deployed', to: 'nsrm47@gmail.com'
+                Check console output at $BUILD_URL to view the results.''', compresslog: true, subject: 'This application is deployed', to: 'nsrm47@gmal.com'
             }
         }
     }
